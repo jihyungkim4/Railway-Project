@@ -15,7 +15,7 @@
 <%
 	try {
 	    Class.forName("com.mysql.jdbc.Driver");
-	    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "pass");
+	    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
 	
 	    String query = "SELECT q.question_id, q.email_address, q.body AS question_body, " +
 	                   "a.body AS answer_body " +

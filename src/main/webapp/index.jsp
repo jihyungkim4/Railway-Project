@@ -21,7 +21,7 @@
 							  
 	<br>
 		<div>
-		<a href="register.jsp">Register</a>
+		<a href="signup.jsp">Register</a> 
 		<a href="login.jsp">Login</a>
 		</div>
 		

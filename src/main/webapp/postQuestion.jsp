@@ -15,7 +15,7 @@
 
     try {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "pass");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
 
         String query = "INSERT INTO questions (email_address, body) VALUES (?, ?)";
         PreparedStatement pstmt = con.prepareStatement(query);

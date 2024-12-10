@@ -22,7 +22,7 @@
         }
 
         Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "pass");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
 
         String query = "SELECT * FROM train_schedules_has WHERE DATE(departure_time) = ?";
         PreparedStatement pstmt = con.prepareStatement(query);
