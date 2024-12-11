@@ -248,8 +248,7 @@ Welcome <%=session.getAttribute("username")%>
         	    
         	            <li><a href="browseQuestions.jsp">Browse Questions and Answers</a></li>
         	            <li><a href="searchQuestions.jsp">Search Questions by Keywords</a></li>
-			            <li><a href="sendQuestion.jsp">Send a Question to Customer Service</a></li>
-			            <li><a href="replyToQuestions.jsp">Reply to Customer Questions</a></li>
+			            <li><a href="forum.jsp">Reply to Customer Questions</a></li>
 			            <li><a href="trainSchedulesByStation.jsp">List Train Schedules by Station</a></li>
 			            <li><a href="customersByTransitLine.jsp">List Customers by Transit Line and Date</a></li>
 			        </ul>

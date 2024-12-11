@@ -50,8 +50,8 @@
 </html> --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import ="java.sql.*" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,45 +59,48 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 
+	<%
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
-	
+
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
 	Statement st = con.createStatement();
-	
+
 	ResultSet rs = null;
 	boolean isAuthenticated = false;
-	
+
 	rs = st.executeQuery("SELECT * FROM customer WHERE username='" + username + "' AND password='" + password + "'");
 	if (rs.next()) {
-	    session.setAttribute("username", username);
-	    isAuthenticated = true;
+		session.setAttribute("username", username);
+		isAuthenticated = true;
 	} else {
-	    rs = st.executeQuery("SELECT * FROM employee WHERE username='" + username + "' AND password='" + password + "'");
-	    if (rs.next()) {
-	        session.setAttribute("username", username);
-	        if (rs.getString("role") != null) {
-	            session.setAttribute("role", rs.getString("role"));
-	        }
-	        isAuthenticated = true;
-	    }
+		rs = st.executeQuery("SELECT * FROM employee WHERE username='" + username + "' AND password='" + password + "'");
+		if (rs.next()) {
+			session.setAttribute("username", username);
+			if (rs.getString("role") != null) {
+		session.setAttribute("role", rs.getString("role"));
+			}
+			isAuthenticated = true;
+		}
 	}
-	
-	if (rs != null) rs.close();
-	if (st != null) st.close();
-	if (con != null) con.close();
-	
+
+	if (rs != null)
+		rs.close();
+	if (st != null)
+		st.close();
+	if (con != null)
+		con.close();
+
 	if (isAuthenticated) {
-	    if ("customer".equalsIgnoreCase((String) session.getAttribute("role"))) {
-	        response.sendRedirect("customerSuccessPage.jsp");
-	    } else {
-	        response.sendRedirect("success.jsp");
-	    }
+		if ("customer".equalsIgnoreCase((String) session.getAttribute("role"))) {
+			response.sendRedirect("customerSuccessPage.jsp");
+		} else {
+			response.sendRedirect("success.jsp");
+		}
 	} else {
-	    out.println("Invalid username or password. <a href='login.jsp'>Try again</a>");
+		out.println("Invalid username or password. <a href='login.jsp'>Try again</a>");
 	}
-%>
+	%>
 </body>
 </html>

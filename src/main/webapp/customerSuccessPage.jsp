@@ -85,7 +85,6 @@ Welcome <%=session.getAttribute("username")%>
 <h2>Customer Features</h2>
 <ul>
     <li><a href="resPage.jsp">Reserve A Trip</a></li>
-    <li><a href="searchSchedules.jsp">Search Train Schedules</a></li>
 </ul>
 
 	

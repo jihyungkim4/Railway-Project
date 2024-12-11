@@ -32,36 +32,51 @@
         List<Map<String, String>> matchingSchedules = new ArrayList<>();
 
         while (rs.next()) {
-            String stops = rs.getString("stops");
-            String stopTimes = rs.getString("stop_times");
+            try {
+                String stops = rs.getString("stops");
+                String stopTimes = rs.getString("stop_times");
 
-            List<String> stopsList = Arrays.asList(stops.split(","));
-            List<String> stopTimesList = Arrays.asList(stopTimes.split(","));
-
-            if (stopsList.contains(origin) && stopsList.contains(destination)) {
-                if (stopsList.indexOf(origin) < stopsList.indexOf(destination)) {
-                    double fare = rs.getDouble("fare");
-                    int numStops = stopsList.size();
-                    double farePerStop = fare / numStops;
-
-                    int originIndex = stopsList.indexOf(origin);
-                    int destinationIndex = stopsList.indexOf(destination) + 1;
-
-                    List<String> relevantStops = stopsList.subList(stopsList.indexOf(origin), stopsList.indexOf(destination) + 1);
-                    List<String> relevantStopTimes = stopTimesList.subList(originIndex, destinationIndex);
-
-                    Map<String, String> schedule = new HashMap<>();
-                    schedule.put("transitline", rs.getString("transitline"));
-                    schedule.put("departure_time", rs.getString("departure_time"));
-                    schedule.put("arrival_time", rs.getString("arrival_time"));
-                    schedule.put("fare", rs.getString("fare"));
-                    schedule.put("travel_time", rs.getString("travel_time"));
-                    schedule.put("relevant_stops", relevantStops.toString());
-                    schedule.put("relevant_stop_times", relevantStopTimes.toString());
-                    schedule.put("fare_per_stop", String.format("$%.2f", farePerStop));
-
-                    matchingSchedules.add(schedule);
+                if (stops == null || stopTimes == null || stops.trim().isEmpty() || stopTimes.trim().isEmpty()) {
+                    continue;
                 }
+
+                List<String> stopsList = Arrays.asList(stops.split(","));
+                List<String> stopTimesList = Arrays.asList(stopTimes.split(","));
+
+                if (stopsList.contains(origin) && stopsList.contains(destination)) {
+                    if (stopsList.indexOf(origin) < stopsList.indexOf(destination)) {
+                        double fare = rs.getDouble("fare");
+                        int numStops = stopsList.size();
+                        double farePerStop = fare / numStops;
+
+                        int originIndex = stopsList.indexOf(origin);
+                        int destinationIndex = stopsList.indexOf(destination) + 1;
+
+                        // Check if indices are valid for both lists
+                        if (originIndex >= 0 && destinationIndex <= stopsList.size() && 
+                            originIndex < stopTimesList.size() && destinationIndex <= stopTimesList.size()) {
+                            
+                            List<String> relevantStops = stopsList.subList(originIndex, destinationIndex);
+                            List<String> relevantStopTimes = stopTimesList.subList(originIndex, destinationIndex);
+
+                            Map<String, String> schedule = new HashMap<>();
+                            schedule.put("transitline", rs.getString("transitline"));
+                            schedule.put("departure_time", rs.getString("departure_time"));
+                            schedule.put("arrival_time", rs.getString("arrival_time"));
+                            schedule.put("fare", rs.getString("fare"));
+                            schedule.put("travel_time", rs.getString("travel_time"));
+                            schedule.put("relevant_stops", relevantStops.toString());
+                            schedule.put("relevant_stop_times", relevantStopTimes.toString());
+                            schedule.put("fare_per_stop", String.format("$%.2f", farePerStop));
+
+                            matchingSchedules.add(schedule);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                // Log the error or handle it appropriately
+                System.out.println("Error processing schedule: " + e.getMessage());
+                continue; // Skip this record and continue with the next one
             }
         }
 
