@@ -228,9 +228,9 @@ Welcome <%=session.getAttribute("username")%>
     %>
         <h2>Admin Features</h2>
         <ul>
-            <li><a href="addCustomerInfo.jsp">Add Customer Info</a></li>
-            <li><a href="editCustomerInfo.jsp">Edit Customer Info</a></li>
-            <li><a href="deleteCustomerInfo.jsp">Delete Customer Info</a></li>
+            <li><a href="addCustomerInfo.jsp">Add Customer Rep Info</a></li>
+            <li><a href="editCustomerInfo.jsp">Edit Customer Rep Info</a></li>
+            <li><a href="deleteCustomerInfo.jsp">Delete Customer Rep Info</a></li>
             <li><a href="salesPerMonth.jsp">Sales Reports Per Month</a></li>
             <li><a href="listOfReservations.jsp">List Of Reservations</a></li>
             <li><a href="listingOfRevenue.jsp">Listing Of Revenue</a></li>
