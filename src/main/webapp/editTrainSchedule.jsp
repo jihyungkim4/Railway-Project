@@ -15,7 +15,7 @@
 
     // Database connection
     Class.forName("com.mysql.jdbc.Driver");
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 
     // Query for dropdown data
     String trainLinesQuery = "SELECT DISTINCT transitline FROM train_schedules_has";

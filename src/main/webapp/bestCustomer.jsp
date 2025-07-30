@@ -10,7 +10,7 @@
     <%
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 
             String query = "SELECT passenger, SUM(total_fare) AS total_spent " +
                            "FROM reservations_for_associatedwith_contains " +

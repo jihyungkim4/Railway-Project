@@ -60,7 +60,7 @@
         try {
             // Load JDBC Driver and establish a connection
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 
             // Query for customers with reservations on the given transit line and date
             String query = "SELECT r.reservation_number, r.transitline, r.origin_station, r.destination_station, r.total_fare, c.username, c.email_address " +

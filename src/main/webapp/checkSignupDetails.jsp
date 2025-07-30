@@ -15,7 +15,7 @@
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
 	Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 	
 	try {
 		String query = "INSERT INTO customer (first_name, last_name, email_address, username, password) VALUES (?, ?, ?, ?, ?)";

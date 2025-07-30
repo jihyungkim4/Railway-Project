@@ -13,7 +13,7 @@ String ssn = request.getParameter("ssn");
 if (ssn != null && !ssn.trim().isEmpty()) {
    try {
        Class.forName("com.mysql.jdbc.Driver");
-       Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+       Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 
        String query = "DELETE FROM employee WHERE ssn = ? AND role = 'customer_rep'";
        PreparedStatement ps = con.prepareStatement(query);

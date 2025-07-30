@@ -15,7 +15,7 @@
         try {
             
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 
             
             String query = "SELECT DATE_FORMAT(reservation_date, '%Y-%m') AS month, " +

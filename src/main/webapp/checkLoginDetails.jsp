@@ -13,7 +13,7 @@
 	String password = request.getParameter("password");
 	
 	Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 	Statement st = con.createStatement();
 	
 	ResultSet rs = null;
@@ -64,7 +64,7 @@
 	String password = request.getParameter("password");
 
 	Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 	Statement st = con.createStatement();
 
 	ResultSet rs = null;

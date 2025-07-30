@@ -23,7 +23,7 @@
 
     try {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 
         // Update schedule
         String query = "UPDATE train_schedules_has SET origin = ?, destination = ?, stops = ?, stop_times = ?, travel_time = ?, fare = ? WHERE transitline = ? AND departure_time = ?";

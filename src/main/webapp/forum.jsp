@@ -24,7 +24,7 @@
     <%
     try {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 
         String keyword = request.getParameter("keyword");
         String query = "SELECT q.question_id, q.email_address, q.body AS question_body, " +

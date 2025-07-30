@@ -23,7 +23,7 @@
 
     try {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 
         String updateQuery = "UPDATE reservations_for_associatedwith_contains SET status = 'cancelled' WHERE reservation_number = ?";
         PreparedStatement ps = con.prepareStatement(updateQuery);

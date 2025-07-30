@@ -1,0 +1,23 @@
+# Build directories
+build/
+target/
+webapp-ready/
+
+# IDE files
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+
+# Database files (optional - you might want to keep these)
+# *.sql

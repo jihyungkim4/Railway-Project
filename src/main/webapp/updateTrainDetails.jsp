@@ -25,7 +25,7 @@
 
         // Database connection
         Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 
         // Update query
         String updateQuery = "UPDATE train_schedules_has SET origin = ?, destination = ?, stops = ?, stop_times = ?, " +

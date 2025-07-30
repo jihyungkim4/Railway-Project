@@ -17,7 +17,7 @@ String password = request.getParameter("password");
 if (ssn != null && username != null && firstName != null && lastName != null && password != null) {
    try {
        Class.forName("com.mysql.jdbc.Driver");
-       Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+       Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 
        String checkQuery = "SELECT COUNT(*) FROM employee WHERE ssn = ?";
        PreparedStatement checkStmt = con.prepareStatement(checkQuery);

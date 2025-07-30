@@ -37,7 +37,7 @@
     try {
         // Load JDBC Driver and establish a connection
         Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "rootroot");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs336project", "root", "9142203eE!");
 
         // Fetch email address from the database using the username
         String emailLookupQuery = "SELECT email_address FROM customer WHERE username = ?";
