@@ -87,6 +87,9 @@ CREATE TABLE `reservations_for_associatedwith_contains` (
   `train_number` int DEFAULT NULL,
   `station_id` int DEFAULT NULL,
   `email_address` varchar(50) DEFAULT NULL,
+  `status` varchar(20) DEFAULT 'active',
+  `is_round_trip` boolean DEFAULT FALSE,
+  `return_date` date DEFAULT NULL,
   PRIMARY KEY (`reservation_number`,`reservation_date`),
   KEY `transitline` (`transitline`,`train`),
   KEY `station_id` (`station_id`),
@@ -174,10 +177,39 @@ VALUES
 '2024-12-05 09:00:00', '2024-12-05 10:00:00', 1.0, 25.50, 102);
 
 -- Insert reservations
-INSERT INTO reservations_for_associatedwith_contains (reservation_number, total_fare, reservation_date, passenger, transitline, train, origin_station, destination_station, email_address)
+INSERT INTO reservations_for_associatedwith_contains (reservation_number, total_fare, reservation_date, passenger, transitline, train, origin_station, destination_station, email_address, status)
 VALUES 
-(1, 50.00, '2024-12-04', 'John Doe', 'NEC', 'Train_A', 'Trenton', 'New York Penn', 'johndoe@example.com'),
-(2, 25.50, '2024-12-05', 'Jane Smith', 'NAC', 'Train_B', 'Princeton Junction', 'Metropark', 'janesmith@example.com');
+(1, 50.00, '2024-12-04', 'John Doe', 'NEC', 'Train_A', 'Trenton', 'New York Penn', 'johndoe@example.com', 'active'),
+(2, 25.50, '2024-12-05', 'Jane Smith', 'NAC', 'Train_B', 'Princeton Junction', 'Metropark', 'janesmith@example.com', 'active');
+
+-- Table structure for table `questions`
+DROP TABLE IF EXISTS `questions`;
+CREATE TABLE `questions` (
+  `question_id` int NOT NULL AUTO_INCREMENT,
+  `email_address` varchar(50) NOT NULL,
+  `body` text NOT NULL,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`question_id`),
+  FOREIGN KEY (`email_address`) REFERENCES `customer` (`email_address`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Table structure for table `answers`
+DROP TABLE IF EXISTS `answers`;
+CREATE TABLE `answers` (
+  `answer_id` int NOT NULL AUTO_INCREMENT,
+  `question_id` int NOT NULL,
+  `email_address` varchar(50) NOT NULL,
+  `body` text NOT NULL,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`answer_id`),
+  FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Insert sample questions
+INSERT INTO questions (email_address, body) VALUES
+('johndoe@example.com', 'How do I cancel my reservation?'),
+('janesmith@example.com', 'What are the baggage allowances for train travel?'),
+('johndoe@example.com', 'Can I change my departure time after booking?');
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

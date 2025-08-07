@@ -22,11 +22,14 @@
 	rs = st.executeQuery("SELECT * FROM customer WHERE username='" + username + "' AND password='" + password + "'");
 	if (rs.next()) {
 	    session.setAttribute("username", username);
+	    session.setAttribute("user", username);
+	    session.setAttribute("role", "customer");
 	    isAuthenticated = true;
 	} else {
 	    rs = st.executeQuery("SELECT * FROM employee WHERE username='" + username + "' AND password='" + password + "'");
 	    if (rs.next()) {
 	        session.setAttribute("username", username);
+	        session.setAttribute("user", username);
 	        if (rs.getString("role") != null) {
 	            session.setAttribute("role", rs.getString("role"));
 	        }
@@ -73,11 +76,14 @@
 	rs = st.executeQuery("SELECT * FROM customer WHERE username='" + username + "' AND password='" + password + "'");
 	if (rs.next()) {
 		session.setAttribute("username", username);
+		session.setAttribute("user", username);
+		session.setAttribute("role", "customer");
 		isAuthenticated = true;
 	} else {
 		rs = st.executeQuery("SELECT * FROM employee WHERE username='" + username + "' AND password='" + password + "'");
 		if (rs.next()) {
 			session.setAttribute("username", username);
+			session.setAttribute("user", username);
 			if (rs.getString("role") != null) {
 		session.setAttribute("role", rs.getString("role"));
 			}

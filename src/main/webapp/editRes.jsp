@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="com.cs336.utils.ApplicationDB, java.sql.*" %>
+<%@ page import="com.cs336.pkg.ApplicationDB, java.sql.*" %>
 
 <!DOCTYPE html>
 <html>

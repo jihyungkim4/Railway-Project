@@ -10,7 +10,7 @@ public class ApplicationDB {
 
 	}
 
-	public Connection getConnection() {
+	public static Connection getConnection() {
 
 		// Create a connection string
 		String connectionUrl = "jdbc:mysql://127.0.0.1:3306/cs336project?useSSL=false&allowPublicKeyRetrieval=true";
@@ -53,7 +53,7 @@ public class ApplicationDB {
 
 	public static void main(String[] args) {
 		ApplicationDB dao = new ApplicationDB();
-		Connection connection = dao.getConnection();
+		Connection connection = ApplicationDB.getConnection();
 
 		System.out.println(connection);
 		dao.closeConnection(connection);
